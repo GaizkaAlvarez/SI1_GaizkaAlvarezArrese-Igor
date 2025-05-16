@@ -412,27 +412,43 @@ public class DataAccess {
             Actividad act1 = new Actividad("Pilates", 3, 15);
             Actividad act2 = new Actividad("Pilates", 5, 20);
             Actividad act3 = new Actividad("Padel",   1,  8);
+            Actividad act4 = new Actividad("Padel",   4,  18);
+            Actividad act5 = new Actividad("Futbol",   5,  35);
+            
 
             // 3) Crear y persistir socios
             Socio soc1 = new Socio("Juan",    "Alvarez", "juan@mail.com",   1234, 4321, 10);
             Socio soc2 = new Socio("Ariadna", "Gimeno",  "ari@mail.com",    5678, 8765, 5);
+            Socio soc3 = new Socio("Esther", "Alesanco",  "acuatico@mail.com",    5464, 1111, 25);
+            Socio soc4 = new Socio("Loraine", "Arrese-Igor",  "lora@mail.com",    4444, 0000, 3);
 
             // 4) Crear y persistir facturas (lado dueño)
             Factura fac1 = new Factura(soc1);
             Factura fac2 = new Factura(soc2);
-            //Factura fac3 = new Factura(soc2);
-            fac2.setPrecio(50.0F);
-
+            Factura fac31 = new Factura(soc3);
+            Factura fac32 = new Factura(soc3);   
+            fac31.setEstado2(estadoFactura2.VISIBLE);
+            fac31.setPrecio(15);
+            Factura fac41 = new Factura(soc4);
+            Factura fac42 = new Factura(soc4);
+            fac41.setEstado2(estadoFactura2.VISIBLE);
+            fac41.setPrecio(45);
+            
             // 5) Crear y persistir sesiones
-            Sesion ses1 = new Sesion(sala1, act1, LocalDate.of(2025,8,1), LocalTime.of( 8,0), LocalTime.of( 9,0));
+            Sesion ses1 = new Sesion(sala1, act1, LocalDate.of(2025,8,1), LocalTime.of( 20,0), LocalTime.of( 21,0));
             Sesion ses2 = new Sesion(sala1, act2, LocalDate.of(2025,8,3), LocalTime.of(18,0), LocalTime.of(19,0));
             Sesion ses3 = new Sesion(sala2, act3, LocalDate.of(2025,8,1), LocalTime.of( 8,0), LocalTime.of( 9,0));
             ses3.setCantidadParticipantes(5);
-
+            Sesion ses4 = new Sesion(sala2, act4, LocalDate.of(2025,8,1), LocalTime.of( 9,0), LocalTime.of( 10,0));
+            Sesion ses5 = new Sesion(sala2, act4, LocalDate.of(2025,8,1), LocalTime.of( 10,0), LocalTime.of( 11,0));
+            Sesion ses6 = new Sesion(sala2, act5, LocalDate.of(2025,8,1), LocalTime.of( 11,0), LocalTime.of( 12,0));
             // 6) Sincronizar colecciones bidireccionales
             sala1.getListaSesiones().add(ses1);
             sala1.getListaSesiones().add(ses2);
             sala2.getListaSesiones().add(ses3);
+            sala2.getListaSesiones().add(ses4);
+            sala2.getListaSesiones().add(ses5);
+            sala2.getListaSesiones().add(ses6);
 //            for(int i = 0; i < 15; i++) {
 //            	Sesion sesion = new Sesion(sala2, act3, LocalDate.of(2025,8,1), LocalTime.of(8+i,0), LocalTime.of(9+i,0));
 //            	sala2.getListaSesiones().add(sesion);
@@ -442,9 +458,16 @@ public class DataAccess {
             act1.getListaSesiones().add(ses1);
             act2.getListaSesiones().add(ses2);
             act3.getListaSesiones().add(ses3);
+            act4.getListaSesiones().add(ses4);
+            act4.getListaSesiones().add(ses5);
+            act5.getListaSesiones().add(ses6);
 
             soc1.addFactura(fac1);
             soc2.addFactura(fac2);
+            soc3.addFactura(fac31);
+            soc3.addFactura(fac32);
+            soc4.addFactura(fac41);
+            soc4.addFactura(fac42);
             //soc2.addFactura(fac3);
 
             //Todos los persist
@@ -454,16 +477,27 @@ public class DataAccess {
             em.persist(act1);
             em.persist(act2);
             em.persist(act3);
+            em.persist(act4);
+            em.persist(act5);
             
             em.persist(soc1);
             em.persist(soc2);
+            em.persist(soc3);
+            em.persist(soc4);
             
             em.persist(fac1);
             em.persist(fac2);
+            em.persist(fac31);
+            em.persist(fac32);
+            em.persist(fac41);
+            em.persist(fac42);
             
             em.persist(ses1);
             em.persist(ses2);
             em.persist(ses3);
+            em.persist(ses4);
+            em.persist(ses5);
+            em.persist(ses6);
             
             for (Reserva r : ses1.getListaReservas()) {
 				em.persist(r);
@@ -792,6 +826,7 @@ public class DataAccess {
 				}else {//Aprovechar la factura creada si no tiene que pagar nada
 					fi.getListaReservas().clear();
 				}
+				socio.getListaReservas().clear();
 				socio.setNumeroReservasHechas(0);
 			}
 			em.getTransaction().commit();
