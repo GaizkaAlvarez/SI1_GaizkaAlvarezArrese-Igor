@@ -621,6 +621,11 @@ public class DataAccess {
 		em.getTransaction().begin();
 		Socio socio = em.find(Socio.class, numSocio);
 		Sesion sesion = em.find(Sesion.class, idSesion);
+		for (Reserva unekoa : socio.getListaReservas()) {
+			if (unekoa.getSesion().equals(sesion)) {
+				return -3;
+			}
+		}
 		//Numero maximo de reservas?
 		boolean y = (socio.getNumeroReservasHechas() == socio.getNumeroMaximoReservas());
 		if (!y) {
@@ -709,7 +714,6 @@ public class DataAccess {
 
 	public boolean addActividad2(String nombreActividad, int gradoExigencia, int precio) {
 		em.getTransaction().begin();
-		
 		boolean existe = false;
 
 	    try {
@@ -736,8 +740,9 @@ public class DataAccess {
 				e.printStackTrace();
 				em.getTransaction().rollback();
 			}
+		}else {
+			em.getTransaction().commit();
 		}
-		em.getTransaction().commit();
 		return existe;
 	}
 

@@ -148,7 +148,11 @@ public class ReservarSesion_GUI extends JFrame {
 							} else if (n == -2) {
 								JOptionPane.showMessageDialog(ReservarSesion_GUI.this, "Numero maximo de reservas alcanzado.", "Error", JOptionPane.ERROR_MESSAGE);
 								return;
-							} else {
+							} else if (n == -3) {
+								JOptionPane.showMessageDialog(ReservarSesion_GUI.this, "El socio ya tiene una reserva de esta sesion", "Error", JOptionPane.ERROR_MESSAGE);
+								return;
+							}
+							else {
 								JOptionPane.showMessageDialog(ReservarSesion_GUI.this, "El id de tu reserva es " + n, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 								return;
 							}	
