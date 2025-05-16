@@ -1,0 +1,64 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 19:20:04 #1 store] 
+Database 'C:\Users\gaizk\Desktop\SI1\Workspace\Lab2db4o\NOSE.odb' is opened by 2784@Gaizka
+
+[2025-05-05 19:20:04 #2 type.registry] 
+New type domain.Country
+
+[2025-05-05 19:20:04 #3 type] 
+Type domain.Country is not enhanced.
+
+[2025-05-05 19:20:04 #4 type.registry] 
+New type domain.President
+
+[2025-05-05 19:20:04 #5 type.registry] 
+New type domain.City
+
+[2025-05-05 19:20:04 #6 type] 
+Type domain.President is not enhanced.
+
+[2025-05-05 19:20:04 #7 type.registry] 
+New type domain.AccessMode
+
+[2025-05-05 19:20:04 #8 type] 
+Type domain.City is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 21:25:24 #1 store] 
+Database 'C:\Users\gaizk\Desktop\SI1\Workspace\PROJECTO\America.odb' is opened by 768@Gaizka
+
+[2025-05-05 21:25:24 #2 store] 
+Configuration path: ?
+
+[2025-05-05 21:25:24 #3 type] 
+Type domain.Country is not enhanced.
+
+[2025-05-05 21:25:24 #4 type] 
+Type domain.President is not enhanced.
+
+[2025-05-05 21:25:24 #5 type] 
+Type domain.City is not enhanced.
+
+[2025-05-05 21:25:24 #6 type] 
+Type domain.Sala is not enhanced.
+
+[2025-05-05 21:25:24 #7 type] 
+Type domain.Sesion is not enhanced.
+
+[2025-05-05 21:25:24 #8 type] 
+Type domain.Reserva is not enhanced.
+
+[2025-05-05 21:25:24 #9 type] 
+Type domain.Socio is not enhanced.
+
+[2025-05-05 21:25:24 #10 type] 
+Type domain.Actividad is not enhanced.
+
+[2025-05-05 21:25:24 #11 type] 
+Type domain.Factura is not enhanced.
+
+[2025-05-05 21:25:24 #12 store] 
+Database 'C:\Users\gaizk\Desktop\SI1\Workspace\PROJECTO\America.odb' is closed by 768@Gaizka
+
